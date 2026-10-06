@@ -711,7 +711,7 @@ html.is-locked body { overflow: hidden; }
   letter-spacing: -0.018em;
   color: var(--navy-deep);
 }
-.mega__intro p { color: var(--muted); font-size: var(--fs-small); max-width: 34ch; }
+.mega__text { color: var(--muted); font-size: var(--fs-small); max-width: 34ch; }
 .mega__services { border-top: 1px solid var(--line); }
 .mega-item {
   position: relative;
@@ -2932,9 +2932,9 @@ html.is-locked body { overflow: hidden; }
   transition: transform 450ms var(--ease-out), border-color 450ms var(--ease-out), box-shadow 450ms var(--ease-out);
 }
 .fw-panel--tl,
-.fw-panel--tr { padding-bottom: clamp(56px, 7vw, 128px); }
+.fw-panel--tr { padding-bottom: clamp(96px, 11.5vw, 176px); }
 .fw-panel--bl,
-.fw-panel--br { padding-top: clamp(56px, 7vw, 128px); }
+.fw-panel--br { padding-top: clamp(96px, 11.5vw, 176px); }
 .fw-panel__head { display: flex; align-items: center; gap: 18px; }
 .fw-panel__icon {
   display: grid;
@@ -3408,6 +3408,15 @@ html.is-locked body { overflow: hidden; }
   text-transform: none;
 }
 .eco-dot { fill: var(--yellow); }
+.eco-num { display: none; }
+.eco-num circle { fill: var(--navy-deep); stroke: var(--yellow); stroke-width: 1.5; }
+.eco-num text {
+  fill: var(--yellow);
+  font-family: var(--font-sans);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
 .js .eco-ring {
   stroke-dasharray: var(--len) var(--len);
   stroke-dashoffset: var(--len);
@@ -3806,6 +3815,9 @@ img.is-broken { visibility: hidden; }
   .vflow__intro,
   .model__intro,
   .editorial__head { position: static; }
+  .choice__list { grid-template-columns: minmax(0, 1fr); }
+  .hero__row { grid-template-columns: minmax(0, 1fr); }
+  .hero__lead { max-width: 56ch; }
   .xp-intro__grid--social .collage { order: 1; }
 
   .collage { max-width: 760px; }
@@ -3941,10 +3953,17 @@ img.is-broken { visibility: hidden; }
   .pr-item.is-active .pr-item__icon { transform: rotate(-90deg); }
 
   .eco__diagram { max-width: 520px; }
+  .model__counter { display: none; }
+  .fw-core { order: -1; }
+
+  /* Split hero: image first, content below */
+  .page-hero--split .page-hero__media { order: -1; aspect-ratio: 16 / 10; }
+  .page-hero--split .page-hero__content { padding-top: 40px; }
+  .page-hero--split .page-hero__top { padding-bottom: 36px; }
 
   .page-hero--split { grid-template-columns: minmax(0, 1fr); min-height: 0; }
   .page-hero__content {
-    padding: calc(var(--header-h) + 48px) var(--gutter) 56px;
+    padding: calc(var(--header-h) + 48px) var(--gutter) 64px;
   }
   .page-hero__content::after { display: none; }
   .page-hero__media { aspect-ratio: 16 / 10; }
@@ -4029,10 +4048,32 @@ img.is-broken { visibility: hidden; }
   .story { min-height: 0; }
   .story__inner { padding-block: 112px 80px; }
 
-  .page-hero--full { min-height: max(100svh, 640px); }
-  .page-hero--full .page-hero__overlay {
-    background: linear-gradient(180deg, rgba(3, 39, 70, 0.6) 0%, rgba(3, 39, 70, 0.45) 30%, rgba(3, 39, 70, 0.88) 64%, rgba(2, 24, 45, 0.97) 100%);
+  .page-hero--split .page-hero__media { aspect-ratio: 4 / 3.3; }
+  .page-hero--full { display: block; min-height: 0; }
+  .page-hero--full .page-hero__media {
+    position: relative;
+    inset: auto;
+    height: 86vw;
+    min-height: 320px;
   }
+  .page-hero--full .page-hero__media picture,
+  .page-hero--full .page-hero__media img { position: absolute; inset: 0; }
+  .page-hero--full .page-hero__overlay {
+    inset: 0 0 auto 0;
+    height: max(86vw, 320px);
+    background: linear-gradient(180deg, rgba(2, 24, 45, 0.55) 0%, rgba(3, 39, 70, 0.12) 30%, rgba(3, 39, 70, 0.2) 62%, var(--navy-deep) 100%);
+  }
+  .page-hero--full .page-hero__inner { min-height: 0; padding-top: 8px; padding-bottom: 64px; }
+  .page-hero__bottom { padding-top: 36px; }
+  .hero__metrics {
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    align-items: start;
+    column-gap: 16px;
+  }
+  .metric__value { white-space: nowrap; font-size: 1.7rem; }
+  .eco-label:not(.eco-label--core) { display: none; }
+  .eco-num { display: inline; }
   .page-hero__actions .btn,
   .cta-band__actions .btn { flex: 1 1 auto; }
 
@@ -4051,7 +4092,7 @@ img.is-broken { visibility: hidden; }
 @media (max-width: 480px) {
   .btn { min-height: 52px; padding: 0 22px; }
   .hero__metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .metric__value { font-size: 1.65rem; }
+  .metric__value { font-size: 1.5rem; }
   .choice__marker { gap: 12px; }
   .chip { font-size: 1.15rem; }
   .eco__legend li { grid-template-columns: 40px minmax(0, 1fr); }

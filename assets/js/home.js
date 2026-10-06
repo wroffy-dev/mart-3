@@ -205,7 +205,8 @@
     var x = 0, y = 0, tx = 0, ty = 0;
     var raf = null;
     var visible = false;
-    var W = 280, H = 196, GAP = 32;
+    var currentSrc = null;
+    var W = 280, H = 196, GAP = 28;
 
     function enabled() {
       return MART.hasFinePointer() && window.innerWidth >= 1024;
@@ -228,10 +229,13 @@
       });
     }
 
+    // Float the preview above the cursor (like a tooltip) so the hovered
+    // row stays readable; flip below when there is no room under the header.
     function place() {
-      var px = tx + GAP;
-      if (px + W > window.innerWidth - 16) px = tx - GAP - W;
-      return [px, ty - H / 2];
+      var px = Math.min(tx + GAP, window.innerWidth - W - 16);
+      var py = ty - H - GAP;
+      if (py < MART.headerOffset() + 12) py = ty + GAP;
+      return [px, py];
     }
 
     function loop() {
@@ -247,6 +251,7 @@
     }
 
     function setCurrent(src) {
+      currentSrc = src;
       Object.keys(images).forEach(function (key) {
         images[key].classList.toggle('is-current', key === src);
       });
@@ -271,22 +276,28 @@
       preview.classList.remove('is-visible');
     }
 
+    // Driven by pointermove (not pointerenter) so the preview reappears
+    // after a scroll, when the cursor is already inside a row.
     lists.forEach(function (list) {
       list.addEventListener('pointerenter', function () { if (enabled()) ensureImages(); });
       list.addEventListener('pointerleave', hidePreview);
       list.addEventListener('pointermove', function (e) {
-        if (!visible || e.pointerType !== 'mouse') return;
+        if (e.pointerType !== 'mouse' || !enabled()) return;
+        var link = e.target.closest('[data-preview]');
+        if (!link) {
+          if (visible) hidePreview();
+          return;
+        }
+        ensureImages();
+        var src = link.getAttribute('data-preview');
+        if (src !== currentSrc) setCurrent(src);
+        if (!visible) {
+          showPreview(e);
+          return;
+        }
         tx = e.clientX;
         ty = e.clientY;
         if (!raf) raf = window.requestAnimationFrame(loop);
-      });
-      toArray(list.querySelectorAll('[data-preview]')).forEach(function (link) {
-        link.addEventListener('pointerenter', function (e) {
-          if (e.pointerType !== 'mouse' || !enabled()) return;
-          ensureImages();
-          setCurrent(link.getAttribute('data-preview'));
-          showPreview(e);
-        });
       });
     });
     window.addEventListener('scroll', function () { if (visible) hidePreview(); }, { passive: true });

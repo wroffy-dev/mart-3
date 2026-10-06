@@ -12,10 +12,20 @@
   <meta property="og:description" content="MART Global designs and implements complex, large-scale programs through community participation, institutional partnerships, market linkages and technology-enabled execution.">
   <meta property="og:image" content="assets/images/program-community.webp">
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+    document.documentElement.classList.add('js');
+    // Font preloads only over http(s): file:// origins reject CORS preloads.
+    if (/^https?:$/.test(location.protocol)) {
+      ['newsreader-latin', 'inter-latin'].forEach(function (f) {
+        var l = document.createElement('link');
+        l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = 'anonymous';
+        l.href = 'assets/fonts/' + f + '.woff2';
+        document.head.appendChild(l);
+      });
+    }
+  </script>
   <link rel="stylesheet" href="assets/css/style.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <noscript><style>.experience__panel[hidden] { display: block !important; } .hover-preview { display: none; }</style></noscript>
 </head>
 <body class="page-lspi" id="top">
 <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false"><symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></symbol><symbol id="i-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8.5 7H17v8.5"/></symbol><symbol id="i-chevron-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></symbol><symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol><symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6 6 18"/></symbol><symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 3.8h3.3l1.8 4.6-2.3 1.4a11.5 11.5 0 0 0 6.2 6.2l1.4-2.3 4.6 1.8v3.3a2 2 0 0 1-2.2 2A16.3 16.3 0 0 1 3.2 6a2 2 0 0 1 2-2.2Z"/></symbol><symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></symbol><symbol id="i-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.4"/></symbol><symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3Z"/></symbol><symbol id="i-radar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="m12 12 5.5-5.5"/><circle cx="12" cy="12" r="1.2"/></symbol><symbol id="i-institution" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5M5 10.5v7M9.7 10.5v7M14.3 10.5v7M19 10.5v7M3 20h18"/></symbol><symbol id="i-megaphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.2v3.6c0 .6.4 1 1 1h2.2L13 19V5L7.2 9.2H5c-.6 0-1 .4-1 1Z"/><path d="M16.5 9.2a4 4 0 0 1 0 5.6M19 6.7a7.6 7.6 0 0 1 0 10.6"/></symbol><symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 21V3.8M5.5 4.5h11.8l-2.3 4 2.3 4H5.5"/></symbol><symbol id="i-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-8.5M12 12.5c0-4.3 3-7.3 8-7.3 0 5-3 7.3-8 7.3ZM12 14.5c0-3.1-2.6-5.4-7-5.4 0 3.9 2.6 5.4 7 5.4Z"/></symbol><symbol id="i-people" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7.5" r="2.6"/><circle cx="5.3" cy="9.6" r="2"/><circle cx="18.7" cy="9.6" r="2"/><path d="M7.8 19.5c0-2.4 1.9-4.3 4.2-4.3s4.2 1.9 4.2 4.3M2.3 18.5c0-1.9 1.4-3.4 3.1-3.4.9 0 1.7.4 2.3 1M21.7 18.5c0-1.9-1.4-3.4-3.1-3.4-.9 0-1.7.4-2.3 1"/></symbol><symbol id="i-woman-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7.5" r="3.2"/><path d="M3.8 20.5c0-3.5 2.8-6.3 6.2-6.3s6.2 2.8 6.2 6.3M18.5 3.5v5M16 6h5"/></symbol><symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2.5 9.2 9.5-4.7 9.5 4.7-9.5 4.7Z"/><path d="M6.3 11.2v4.6c0 1.6 2.6 3 5.7 3s5.7-1.4 5.7-3v-4.6M21.5 9.2v5.5"/></symbol><symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5V6.3C4 5 5 4 6.3 4h10.4M4 7.5h15a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7.5Z"/><path d="M15.5 13.8h2"/></symbol><symbol id="i-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 18.5C5.5 10.6 11.3 4.8 19.5 4.5c-.3 8.2-6.1 14-14 14Z"/><path d="M5.5 18.5 14 10M4 20l1.5-1.5"/></symbol><symbol id="i-mobile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="6.8" y="2.8" width="10.4" height="18.4" rx="2.2"/><path d="M10.8 18h2.4"/></symbol><symbol id="i-stall" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9 5.4 4h13.2l1.9 5M3.5 9h17c0 1.7-1.3 3-2.8 3s-2.9-1.3-2.9-3c0 1.7-1.3 3-2.8 3S9.2 10.7 9.2 9c0 1.7-1.3 3-2.9 3S3.5 10.7 3.5 9ZM5.2 12v8.5h13.6V12M10 20.5v-4.5h4v4.5"/></symbol><symbol id="i-handshake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m2.5 11 3.6-3.6 3.4 1.2 2-1.6c.8-.6 1.9-.6 2.7 0l3.2 2.6 2.6-.4M2.5 11l2 2M21.5 10.6l-2.3 2.7M7 13.5l3.1 3a1.3 1.3 0 0 0 1.9-1.9M9.2 12.2l3.9 3.7a1.3 1.3 0 0 0 1.9-1.8l-2.6-2.6M12.3 11.4l2.9 2.8a1.3 1.3 0 0 0 1.9-1.8L14 9.3"/></symbol><symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4M4 20h16M8 16v-4M12 16V8M16 16v-6"/></symbol><symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol><symbol id="i-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></symbol><symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.48 2.48 0 1 1 0 4.96 2.48 2.48 0 0 1 0-4.96ZM3 9.75h3.96V21H3V9.75Zm6.5 0h3.8v1.54h.05c.53-1 1.82-2.05 3.75-2.05 4 0 4.74 2.63 4.74 6.06V21h-3.95v-5.06c0-1.2-.02-2.76-1.68-2.76-1.68 0-1.94 1.31-1.94 2.67V21H9.5V9.75Z"/></symbol><symbol id="i-facebook" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.87.25-1.46 1.5-1.46h1.6V4.46A21 21 0 0 0 14.27 4.3c-2.3 0-3.87 1.4-3.87 3.98v2.22H7.8v3h2.6V21h3.1Z"/></symbol><symbol id="i-x" viewBox="0 0 24 24" fill="currentColor"><path d="M17.53 3.5h3.07l-6.7 7.66 7.88 10.34h-6.17l-4.83-6.32-5.53 6.32H2.18l7.17-8.2L1.8 3.5h6.33l4.37 5.78 5.03-5.78Zm-1.08 16.18h1.7L7.18 5.22H5.35l11.1 14.46Z"/></symbol><symbol id="i-youtube" viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.76-1.77C18.3 5 12 5 12 5s-6.3 0-7.84.43A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.76 1.77C5.7 19 12 19 12 19s6.3 0 7.84-.43a2.5 2.5 0 0 0 1.76-1.77A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15V9l5.2 3L10 15Z"/></symbol><symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></symbol></svg>
@@ -68,7 +78,7 @@
       <div class="mega__intro">
         <p class="eyebrow stagger-item" style="--i:0">Corporate Solutions</p>
         <p class="mega__title stagger-item" style="--i:1">Insight, strategy and activation for emerging markets.</p>
-        <p class="stagger-item" style="--i:2">Research, strategy and business transformation capabilities for organisations seeking sustainable market advantage.</p>
+        <p class="mega__text stagger-item" style="--i:2">Research, strategy and business transformation capabilities for organisations seeking sustainable market advantage.</p>
         <a class="link-arrow stagger-item" style="--i:3" href="index.html#corporate">Explore Corporate Solutions <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a>
       </div>
       <ul class="mega__services">
@@ -124,7 +134,7 @@
       <div class="mega__intro">
         <p class="eyebrow stagger-item" style="--i:0">Social Solutions</p>
         <p class="mega__title stagger-item" style="--i:1">Implementation and impact, at scale.</p>
-        <p class="stagger-item" style="--i:2">Large-scale implementation and impact capabilities designed for communities, institutions and development programs.</p>
+        <p class="mega__text stagger-item" style="--i:2">Large-scale implementation and impact capabilities designed for communities, institutions and development programs.</p>
         <a class="link-arrow stagger-item" style="--i:3" href="index.html#social">Explore Social Solutions <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a>
       </div>
       <ul class="mega__services">
@@ -177,7 +187,7 @@
 <div class="mega-scrim" data-mega-scrim aria-hidden="true"></div>
 
 <!-- Full-screen mobile menu -->
-<div class="mobile-menu" id="mobile-menu" data-mobile-menu inert aria-label="Site menu">
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu inert role="dialog" aria-modal="true" aria-label="Site menu">
   <nav aria-label="Mobile">
     <ul class="mobile-menu__list">
       <li style="--i:0"><a class="m-link" href="index.html" >Home</a></li>
@@ -219,7 +229,7 @@
   <div class="mobile-menu__foot">
     <a class="btn btn--yellow" href="#contact">Let’s Talk <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-right"></use></svg></a>
     <div class="mobile-menu__contact">
-      <a href="tel:+911204215323">+91-120-4215323</a>
+      <a href="tel:+911204215323">+91&#8209;120&#8209;4215323</a>
       <a href="mailto:info@martrural.com">info@martrural.com</a>
       <span>A-51, Third Floor, Sector 2, Noida – 201301</span>
     </div>
@@ -282,7 +292,7 @@
           <footer>MART Global — implementation philosophy</footer>
         </blockquote>
       </div>
-      <ul class="tag-list stagger-group" aria-label="Areas of implementation experience">
+      <ul class="tag-list stagger-group">
         <li class="reveal-up">Community development</li>
         <li class="reveal-up">Livelihoods</li>
         <li class="reveal-up">Agriculture</li>
@@ -592,6 +602,11 @@
               <circle class="eco-dot" cx="641.0" cy="413.3" r="3"/>
               <circle class="eco-dot" cx="202.2" cy="283.5" r="3"/>
             </g>
+            <g class="eco-num"><circle cx="385.2" cy="283.7" r="19"/><text x="385.2" y="290.2" text-anchor="middle">01</text></g>
+            <g class="eco-num"><circle cx="434.2" cy="242.6" r="19"/><text x="434.2" y="249.1" text-anchor="middle">02</text></g>
+            <g class="eco-num"><circle cx="483.2" cy="201.4" r="19"/><text x="483.2" y="207.9" text-anchor="middle">03</text></g>
+            <g class="eco-num"><circle cx="530.7" cy="161.6" r="19"/><text x="530.7" y="168.1" text-anchor="middle">04</text></g>
+            <g class="eco-num"><circle cx="576.7" cy="123.0" r="19"/><text x="576.7" y="129.5" text-anchor="middle">05</text></g>
             <text class="eco-label" data-ring="5" x="330" y="30" text-anchor="middle">Sustainable Impact</text>
             <text class="eco-label" data-ring="4" x="330" y="90" text-anchor="middle">Markets</text>
             <text class="eco-label" data-ring="3" x="330" y="152" text-anchor="middle">Government + Partners</text>
@@ -711,7 +726,7 @@
           <span class="brand__word"><span class="brand__name">MART</span><span class="brand__sub">Global</span></span>
         </a>
         <p class="footer__about">MART Global Management Solutions LLP is a knowledge-based consulting firm specialising in rural and emerging markets — combining research, strategy and implementation to create growth and lasting impact since 1993.</p>
-        <div class="social" aria-label="MART Global on social media">
+        <div class="social" role="group" aria-label="MART Global on social media">
           <a href="https://www.facebook.com/martrural" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-facebook"></use></svg></a>
           <a href="#" data-soon="Social profile links will be confirmed by MART before launch." aria-label="LinkedIn"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"></use></svg></a>
           <a href="#" data-soon="Social profile links will be confirmed by MART before launch." aria-label="X (Twitter)"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"></use></svg></a>
@@ -755,7 +770,7 @@
         <p class="footer__title">Contact</p>
         <address class="footer__contact">
           <div class="footer__contact-row"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-map-pin"></use></svg><span><strong class="visually-hidden">Corporate Office: </strong>A-51, Third Floor, Sector 2,<br>Noida – 201301, Uttar Pradesh, India</span></div>
-          <div class="footer__contact-row"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg><a href="tel:+911204215323">+91-120-4215323</a></div>
+          <div class="footer__contact-row"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg><a href="tel:+911204215323">+91&#8209;120&#8209;4215323</a></div>
           <div class="footer__contact-row"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"></use></svg><a href="mailto:info@martrural.com">info@martrural.com</a></div>
           <div class="footer__offices">
             <p><strong>Regional Office</strong>2513 (B), 1st Floor, Metro Mansion Lane, Ravi Talkies Chowk, Lewis Road, Bhubaneswar – 751002, Odisha</p>

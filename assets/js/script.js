@@ -114,11 +114,11 @@
 
     function panelOf(t) { return document.getElementById(t.getAttribute('aria-controls')); }
 
-    function setOpen(t, open) {
+    function setOpen(t, isOpen) {
       var panel = panelOf(t);
-      t.setAttribute('aria-expanded', open ? 'true' : 'false');
-      panel.classList.toggle('is-open', open);
-      if (open) panel.removeAttribute('inert');
+      t.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      panel.classList.toggle('is-open', isOpen);
+      if (isOpen) panel.removeAttribute('inert');
       else panel.setAttribute('inert', '');
     }
 
@@ -332,17 +332,48 @@
       });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
 
-    els.forEach(function (el) { io.observe(el); });
+    // Masked elements start fully clipped (clip-path), which IntersectionObserver
+    // reports as zero visible area — so they are checked by geometry instead.
+    var masks = [];
+    function isMask(el) { return el.classList.contains('reveal-mask'); }
+
+    function checkMasks() {
+      if (!masks.length) return;
+      var trigger = window.innerHeight * 0.9;
+      masks = masks.filter(function (el) {
+        var r = el.getBoundingClientRect();
+        if (r.width === 0 && r.height === 0) return true; // inside a hidden panel
+        if (r.top < trigger && r.bottom > 0) {
+          el.classList.add('is-inview');
+          return false;
+        }
+        return true;
+      });
+    }
+
+    function track(el) {
+      if (isMask(el)) {
+        if (masks.indexOf(el) === -1) masks.push(el);
+      } else {
+        io.observe(el);
+      }
+    }
+
+    els.forEach(track);
+    MART.onScroll(checkMasks);
+    MART.onResize(checkMasks);
+    checkMasks();
 
     MART.observeReveals = function (root) {
       toArray(root.querySelectorAll(REVEAL_SEL)).forEach(function (el) {
-        if (!el.classList.contains('is-inview')) io.observe(el);
+        if (!el.classList.contains('is-inview')) track(el);
       });
+      checkMasks();
     };
     MART.resetReveals = function (root) {
       toArray(root.querySelectorAll(REVEAL_SEL)).forEach(function (el) {
         el.classList.remove('is-inview');
-        io.observe(el);
+        track(el);
       });
     };
   }
@@ -359,12 +390,12 @@
       // Wait (briefly) for the hero image so the reveal never shows an empty frame
       if (img && !img.complete) {
         var done = false;
-        var fire = function () { if (!done) { done = true; requestAnimationFrame(go); } };
+        var fire = function () { if (!done) { done = true; window.requestAnimationFrame(go); } };
         img.addEventListener('load', fire, { once: true });
         img.addEventListener('error', fire, { once: true });
         setTimeout(fire, 700);
       } else {
-        requestAnimationFrame(function () { requestAnimationFrame(go); });
+        window.requestAnimationFrame(function () { window.requestAnimationFrame(go); });
       }
     });
   }
@@ -553,6 +584,11 @@
   /* ---------------------------------------------------------------------
      Same-page anchors: smooth scroll with header offset, no URL churn
      --------------------------------------------------------------------- */
+  // '/', '/index.html' and '/folder/' all point at the same document
+  function normalisePath(path) {
+    return path.replace(/index\.html$/, '');
+  }
+
   function initAnchors() {
     document.addEventListener('click', function (e) {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -560,7 +596,7 @@
       if (!a || a.hasAttribute('data-soon') || a.target === '_blank') return;
       var url;
       try { url = new URL(a.getAttribute('href'), window.location.href); } catch (err) { return; }
-      if (url.pathname !== window.location.pathname || !url.hash || url.hash === '#') return;
+      if (normalisePath(url.pathname) !== normalisePath(window.location.pathname) || !url.hash || url.hash === '#') return;
 
       var hash = url.hash;
       for (var i = 0; i < MART.hashHandlers.length; i++) {
